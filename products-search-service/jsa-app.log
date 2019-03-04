@@ -1,0 +1,788 @@
+2019-03-04 09:37:29.373  INFO 8791 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 8791 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 09:37:29.385  INFO 8791 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 09:37:31.632  INFO 8791 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 09:37:31.730  INFO 8791 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89ms. Found 2 repository interfaces.
+2019-03-04 09:37:32.240  INFO 8791 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$ae8cd610] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 09:37:32.798  INFO 8791 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 09:37:32.838  INFO 8791 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 09:37:32.839  INFO 8791 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 09:37:32.856  INFO 8791 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 09:37:32.972  INFO 8791 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 09:37:32.973  INFO 8791 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3488 ms
+2019-03-04 09:37:33.897  INFO 8791 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 09:37:34.008  INFO 8791 --- [cluster-ClusterId{value='5c7ca4859dfa312257fbf18e', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:4}] to localhost:27017
+2019-03-04 09:37:34.022  INFO 8791 --- [cluster-ClusterId{value='5c7ca4859dfa312257fbf18e', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=9425135}
+2019-03-04 09:37:36.177  INFO 8791 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 09:37:36.308  INFO 8791 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 09:37:36.498  INFO 8791 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 09:37:37.443  INFO 8791 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 09:37:37.513  INFO 8791 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 09:37:37.613  INFO 8791 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 09:37:38.051  INFO 8791 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 09:37:38.265  INFO 8791 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#52e49437:0/SimpleConnection@79454bb5 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 36386]
+2019-03-04 09:37:38.432  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Failed to declare queue: jsa.search.searchservice
+2019-03-04 09:37:38.435  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Queue declaration failed; retries left=3
+
+org.springframework.amqp.rabbit.listener.BlockingQueueConsumer$DeclarationException: Failed to declare queue(s):[jsa.search.searchservice]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:710)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:594)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:581)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1196)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1041)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:126)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:122)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:144)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:1006)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory$CachedChannelInvocationHandler.invoke(CachingConnectionFactory.java:1110)
+	at com.sun.proxy.$Proxy142.queueDeclarePassive(Unknown Source)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:689)
+	... 5 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:494)
+	at com.rabbitmq.client.impl.AMQChannel.privateRpc(AMQChannel.java:288)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:138)
+	... 14 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.client.impl.ChannelN.asyncShutdown(ChannelN.java:516)
+	at com.rabbitmq.client.impl.ChannelN.processAsync(ChannelN.java:346)
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:178)
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:111)
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:670)
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597)
+	... 1 common frames omitted
+
+2019-03-04 09:37:43.441  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Failed to declare queue: jsa.search.searchservice
+2019-03-04 09:37:43.442  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Queue declaration failed; retries left=2
+
+org.springframework.amqp.rabbit.listener.BlockingQueueConsumer$DeclarationException: Failed to declare queue(s):[jsa.search.searchservice]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:710)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:594)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:581)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1196)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1041)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:126)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:122)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:144)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:1006)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory$CachedChannelInvocationHandler.invoke(CachingConnectionFactory.java:1110)
+	at com.sun.proxy.$Proxy142.queueDeclarePassive(Unknown Source)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:689)
+	... 5 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:494)
+	at com.rabbitmq.client.impl.AMQChannel.privateRpc(AMQChannel.java:288)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:138)
+	... 14 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.client.impl.ChannelN.asyncShutdown(ChannelN.java:516)
+	at com.rabbitmq.client.impl.ChannelN.processAsync(ChannelN.java:346)
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:178)
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:111)
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:670)
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597)
+	... 1 common frames omitted
+
+2019-03-04 09:37:48.447  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Failed to declare queue: jsa.search.searchservice
+2019-03-04 09:37:48.448  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Queue declaration failed; retries left=1
+
+org.springframework.amqp.rabbit.listener.BlockingQueueConsumer$DeclarationException: Failed to declare queue(s):[jsa.search.searchservice]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:710)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:594)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:581)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1196)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1041)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:126)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:122)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:144)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:1006)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory$CachedChannelInvocationHandler.invoke(CachingConnectionFactory.java:1110)
+	at com.sun.proxy.$Proxy142.queueDeclarePassive(Unknown Source)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:689)
+	... 5 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:494)
+	at com.rabbitmq.client.impl.AMQChannel.privateRpc(AMQChannel.java:288)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:138)
+	... 14 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.client.impl.ChannelN.asyncShutdown(ChannelN.java:516)
+	at com.rabbitmq.client.impl.ChannelN.processAsync(ChannelN.java:346)
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:178)
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:111)
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:670)
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597)
+	... 1 common frames omitted
+
+2019-03-04 09:37:53.452  WARN 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.listener.BlockingQueueConsumer   : Failed to declare queue: jsa.search.searchservice
+2019-03-04 09:37:53.453 ERROR 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.l.SimpleMessageListenerContainer : Consumer received fatal=false exception on startup
+
+org.springframework.amqp.rabbit.listener.QueuesNotAvailableException: Cannot prepare queue for listener. Either the queue doesn't exist or the broker will not allow us to use it.
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.handleDeclarationException(BlockingQueueConsumer.java:661)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:601)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:581)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1196)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1041)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.amqp.rabbit.listener.BlockingQueueConsumer$DeclarationException: Failed to declare queue(s):[jsa.search.searchservice]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:710)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:594)
+	... 4 common frames omitted
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:126)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:122)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:144)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:1006)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory$CachedChannelInvocationHandler.invoke(CachingConnectionFactory.java:1110)
+	at com.sun.proxy.$Proxy142.queueDeclarePassive(Unknown Source)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:689)
+	... 5 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:494)
+	at com.rabbitmq.client.impl.AMQChannel.privateRpc(AMQChannel.java:288)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:138)
+	... 14 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.client.impl.ChannelN.asyncShutdown(ChannelN.java:516)
+	at com.rabbitmq.client.impl.ChannelN.processAsync(ChannelN.java:346)
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:178)
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:111)
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:670)
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597)
+	... 1 common frames omitted
+
+2019-03-04 09:37:53.455  WARN 8791 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'org.springframework.amqp.rabbit.config.internalRabbitListenerEndpointRegistry'; nested exception is org.springframework.amqp.AmqpIllegalStateException: Fatal exception on listener startup
+2019-03-04 09:37:53.465  INFO 8791 --- [main] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 09:37:53.466  INFO 8791 --- [main] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 09:37:53.466  INFO 8791 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 09:37:53.483 ERROR 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.l.SimpleMessageListenerContainer : Stopping container from aborted consumer
+2019-03-04 09:37:53.483  INFO 8791 --- [SimpleAsyncTaskExecutor-1] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 09:37:53.501  INFO 8791 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-03-04 09:37:53.556  INFO 8791 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-04 09:37:53.559 ERROR 8791 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'org.springframework.amqp.rabbit.config.internalRabbitListenerEndpointRegistry'; nested exception is org.springframework.amqp.AmqpIllegalStateException: Fatal exception on listener startup
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:185)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:879)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:163)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.stackroute.productssearchservice.ProductsSearchServiceApplication.main(ProductsSearchServiceApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:558)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.amqp.AmqpIllegalStateException: Fatal exception on listener startup
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.waitForConsumersToStart(SimpleMessageListenerContainer.java:553)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doStart(SimpleMessageListenerContainer.java:511)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.start(AbstractMessageListenerContainer.java:1261)
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.startIfNecessary(RabbitListenerEndpointRegistry.java:291)
+	at org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry.start(RabbitListenerEndpointRegistry.java:246)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	... 20 common frames omitted
+Caused by: org.springframework.amqp.rabbit.listener.QueuesNotAvailableException: Cannot prepare queue for listener. Either the queue doesn't exist or the broker will not allow us to use it.
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.handleDeclarationException(BlockingQueueConsumer.java:661)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:601)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:581)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1196)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1041)
+	... 1 common frames omitted
+Caused by: org.springframework.amqp.rabbit.listener.BlockingQueueConsumer$DeclarationException: Failed to declare queue(s):[jsa.search.searchservice]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:710)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.passiveDeclarations(BlockingQueueConsumer.java:594)
+	... 4 common frames omitted
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:126)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:122)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:144)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:1006)
+	at com.rabbitmq.client.impl.ChannelN.queueDeclarePassive(ChannelN.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory$CachedChannelInvocationHandler.invoke(CachingConnectionFactory.java:1110)
+	at com.sun.proxy.$Proxy142.queueDeclarePassive(Unknown Source)
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.attemptPassiveDeclarations(BlockingQueueConsumer.java:689)
+	... 5 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:494)
+	at com.rabbitmq.client.impl.AMQChannel.privateRpc(AMQChannel.java:288)
+	at com.rabbitmq.client.impl.AMQChannel.exnWrappingRpc(AMQChannel.java:138)
+	... 14 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no queue 'jsa.search.searchservice' in vhost '/', class-id=50, method-id=10)
+	at com.rabbitmq.client.impl.ChannelN.asyncShutdown(ChannelN.java:516)
+	at com.rabbitmq.client.impl.ChannelN.processAsync(ChannelN.java:346)
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:178)
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:111)
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:670)
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:48)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:597)
+	... 1 common frames omitted
+
+2019-03-04 09:38:19.925  INFO 8994 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 8994 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 09:38:19.928  INFO 8994 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 09:38:21.604  INFO 8994 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 09:38:21.682  INFO 8994 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 2 repository interfaces.
+2019-03-04 09:38:22.202  INFO 8994 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$26961a1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 09:38:22.809  INFO 8994 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 09:38:22.857  INFO 8994 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 09:38:22.860  INFO 8994 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 09:38:22.876  INFO 8994 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 09:38:22.980  INFO 8994 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 09:38:22.980  INFO 8994 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2996 ms
+2019-03-04 09:38:23.759  INFO 8994 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 09:38:23.891  INFO 8994 --- [cluster-ClusterId{value='5c7ca4b79dfa3123228fe263', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27017
+2019-03-04 09:38:23.905  INFO 8994 --- [cluster-ClusterId{value='5c7ca4b79dfa3123228fe263', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3825939}
+2019-03-04 09:38:25.032  INFO 8994 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 09:38:25.141  INFO 8994 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 09:38:25.312  INFO 8994 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 09:38:25.803  INFO 8994 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 09:38:25.831  INFO 8994 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 09:38:25.870  INFO 8994 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 09:38:26.029  INFO 8994 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 09:38:26.120  INFO 8994 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#69553250:0/SimpleConnection@38a2bc48 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 36404]
+2019-03-04 09:38:26.375  INFO 8994 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 09:38:26.389  INFO 8994 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 7.395 seconds (JVM running for 11.868)
+2019-03-04 10:46:59.711  INFO 8994 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 10:47:00.252  INFO 8994 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 10:47:00.261  INFO 8994 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 10:47:00.262  INFO 8994 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 10:49:09.466  INFO 14248 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 14248 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 10:49:09.471  INFO 14248 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 10:49:11.413  INFO 14248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 10:49:11.512  INFO 14248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88ms. Found 2 repository interfaces.
+2019-03-04 10:49:12.059  INFO 14248 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$78320cac] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 10:49:12.592  INFO 14248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 10:49:12.629  INFO 14248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 10:49:12.630  INFO 14248 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 10:49:12.646  INFO 14248 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 10:49:12.756  INFO 14248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 10:49:12.757  INFO 14248 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3214 ms
+2019-03-04 10:49:13.624  INFO 14248 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 10:49:13.736  INFO 14248 --- [cluster-ClusterId{value='5c7cb5519dfa3137a800c66f', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:16}] to localhost:27017
+2019-03-04 10:49:13.743  INFO 14248 --- [cluster-ClusterId{value='5c7cb5519dfa3137a800c66f', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3873843}
+2019-03-04 10:49:15.002  INFO 14248 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 10:49:15.102  INFO 14248 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 10:49:15.322  INFO 14248 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 10:49:15.816  INFO 14248 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 10:49:15.852  INFO 14248 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 10:49:15.896  INFO 14248 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 10:49:16.077  INFO 14248 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 10:49:16.185  INFO 14248 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#27df9497:0/SimpleConnection@462a716f [delegate=amqp://guest@127.0.0.1:5672/, localPort= 37654]
+2019-03-04 10:49:16.330  INFO 14248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 10:49:16.336  INFO 14248 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 7.711 seconds (JVM running for 12.435)
+2019-03-04 11:02:31.342  INFO 14248 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:02:31.472  INFO 14248 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:02:31.479  INFO 14248 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:02:31.479  INFO 14248 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:02:40.582  INFO 15235 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 15235 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:02:40.591  INFO 15235 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:02:42.862  INFO 15235 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:02:42.970  INFO 15235 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 2 repository interfaces.
+2019-03-04 11:02:43.549  INFO 15235 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$9e0e47da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:02:44.076  INFO 15235 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:02:44.118  INFO 15235 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:02:44.118  INFO 15235 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:02:44.133  INFO 15235 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:02:44.227  INFO 15235 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:02:44.227  INFO 15235 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3510 ms
+2019-03-04 11:02:45.057  INFO 15235 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:02:45.158  INFO 15235 --- [cluster-ClusterId{value='5c7cb87d9dfa313b830abb5c', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:17}] to localhost:27017
+2019-03-04 11:02:45.164  INFO 15235 --- [cluster-ClusterId{value='5c7cb87d9dfa313b830abb5c', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3755126}
+2019-03-04 11:02:46.568  INFO 15235 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:02:46.677  INFO 15235 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:02:46.885  INFO 15235 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:02:47.445  INFO 15235 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:02:47.480  INFO 15235 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:02:47.519  INFO 15235 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:02:47.703  INFO 15235 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:02:47.784  INFO 15235 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#423a0b63:0/SimpleConnection@153c5273 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 38024]
+2019-03-04 11:02:47.904  INFO 15235 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:02:47.908  INFO 15235 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.395 seconds (JVM running for 13.288)
+2019-03-04 11:20:29.501  INFO 15235 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:20:29.765  INFO 15235 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:20:29.774  INFO 15235 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:20:29.774  INFO 15235 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:21:06.521  INFO 17256 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 17256 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:21:06.525  INFO 17256 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:21:08.454  INFO 17256 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:21:08.587  INFO 17256 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122ms. Found 2 repository interfaces.
+2019-03-04 11:21:09.146  INFO 17256 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$b120ec06] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:21:09.691  INFO 17256 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:21:09.744  INFO 17256 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:21:09.745  INFO 17256 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:21:09.762  INFO 17256 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:21:09.895  INFO 17256 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:21:09.895  INFO 17256 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3300 ms
+2019-03-04 11:21:11.340  INFO 17256 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:21:11.551  INFO 17256 --- [cluster-ClusterId{value='5c7cbccf9dfa3143680d7e99', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:22}] to localhost:27017
+2019-03-04 11:21:11.569  INFO 17256 --- [cluster-ClusterId{value='5c7cbccf9dfa3143680d7e99', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4668588}
+2019-03-04 11:21:13.893  INFO 17256 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:21:14.158  INFO 17256 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:21:14.478  INFO 17256 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:21:15.532  INFO 17256 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:21:15.606  INFO 17256 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:21:15.709  INFO 17256 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:21:16.211  INFO 17256 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:21:16.502  INFO 17256 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#63c6150b:0/SimpleConnection@79ca0ce1 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 38472]
+2019-03-04 11:21:16.992  INFO 17256 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:21:16.999  INFO 17256 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 11.589 seconds (JVM running for 16.713)
+2019-03-04 11:21:18.345  INFO 17256 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:21:18.735  INFO 17256 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:21:18.752  INFO 17256 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:21:18.756  INFO 17256 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:22:09.936  INFO 17571 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 17571 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:22:09.941  INFO 17571 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:22:11.800  INFO 17571 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:22:11.909  INFO 17571 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102ms. Found 2 repository interfaces.
+2019-03-04 11:22:12.473  INFO 17571 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$46c3aa2b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:22:12.986  INFO 17571 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:22:13.039  INFO 17571 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:22:13.040  INFO 17571 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:22:13.058  INFO 17571 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:22:13.163  INFO 17571 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:22:13.163  INFO 17571 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3167 ms
+2019-03-04 11:22:14.011  INFO 17571 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:22:14.169  INFO 17571 --- [cluster-ClusterId{value='5c7cbd0d9dfa3144a3601971', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:25}] to localhost:27017
+2019-03-04 11:22:14.185  INFO 17571 --- [cluster-ClusterId{value='5c7cbd0d9dfa3144a3601971', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=7368071}
+2019-03-04 11:22:15.580  INFO 17571 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:22:15.704  INFO 17571 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:22:15.923  INFO 17571 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:22:16.449  INFO 17571 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:22:16.474  INFO 17571 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:22:16.506  INFO 17571 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:22:16.656  INFO 17571 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:22:16.789  INFO 17571 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#2e52df12:0/SimpleConnection@68141ae1 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 38504]
+2019-03-04 11:22:17.089  INFO 17571 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:22:17.101  INFO 17571 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.071 seconds (JVM running for 12.898)
+2019-03-04 11:32:23.517  INFO 17571 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:32:24.324  INFO 17571 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:32:24.332  INFO 17571 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:32:24.332  INFO 17571 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:32:35.067  INFO 18540 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 18540 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:32:35.070  INFO 18540 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:32:36.888  INFO 18540 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:32:36.998  INFO 18540 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102ms. Found 2 repository interfaces.
+2019-03-04 11:32:37.597  INFO 18540 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$78488c11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:32:38.193  INFO 18540 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:32:38.237  INFO 18540 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:32:38.237  INFO 18540 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:32:38.259  INFO 18540 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:32:38.372  INFO 18540 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:32:38.372  INFO 18540 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3230 ms
+2019-03-04 11:32:39.227  INFO 18540 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:32:39.379  INFO 18540 --- [cluster-ClusterId{value='5c7cbf7f9dfa31486c11b723', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:26}] to localhost:27017
+2019-03-04 11:32:39.394  INFO 18540 --- [cluster-ClusterId{value='5c7cbf7f9dfa31486c11b723', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3237671}
+2019-03-04 11:32:40.638  INFO 18540 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:32:40.760  INFO 18540 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:32:40.972  INFO 18540 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:32:41.566  INFO 18540 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:32:41.601  INFO 18540 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:32:41.648  INFO 18540 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:32:41.836  INFO 18540 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:32:41.903  INFO 18540 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6c642683:0/SimpleConnection@47da5e9d [delegate=amqp://guest@127.0.0.1:5672/, localPort= 38744]
+2019-03-04 11:32:42.004  INFO 18540 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:32:42.012  INFO 18540 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 7.838 seconds (JVM running for 13.619)
+2019-03-04 11:39:25.208  INFO 18540 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:39:25.914  INFO 18540 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:39:25.920  INFO 18540 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:39:25.921  INFO 18540 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:40:10.733  INFO 19412 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 19412 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:40:10.739  INFO 19412 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:40:12.931  INFO 19412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:40:13.062  INFO 19412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 124ms. Found 2 repository interfaces.
+2019-03-04 11:40:13.998  INFO 19412 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$a8a034ee] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:40:14.902  INFO 19412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:40:14.970  INFO 19412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:40:14.970  INFO 19412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:40:15.003  INFO 19412 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:40:15.223  INFO 19412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:40:15.227  INFO 19412 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4400 ms
+2019-03-04 11:40:16.460  INFO 19412 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:40:16.683  INFO 19412 --- [cluster-ClusterId{value='5c7cc1489dfa314bd4f8f38b', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:33}] to localhost:27017
+2019-03-04 11:40:16.698  INFO 19412 --- [cluster-ClusterId{value='5c7cc1489dfa314bd4f8f38b', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=5119878}
+2019-03-04 11:40:19.307  INFO 19412 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:40:19.548  INFO 19412 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:40:19.943  INFO 19412 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:40:20.831  INFO 19412 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:40:20.869  INFO 19412 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:40:20.935  INFO 19412 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:40:21.277  INFO 19412 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:40:21.382  INFO 19412 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#212ec848:0/SimpleConnection@215bc1c6 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 38928]
+2019-03-04 11:40:21.871  INFO 19412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:40:21.894  INFO 19412 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 12.006 seconds (JVM running for 19.111)
+2019-03-04 11:49:21.138  INFO 19412 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:49:21.275  INFO 19412 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:49:21.286  INFO 19412 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:49:21.286  INFO 19412 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:49:52.827  INFO 20922 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 20922 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:49:52.831  INFO 20922 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:49:54.716  INFO 20922 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:49:54.807  INFO 20922 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85ms. Found 2 repository interfaces.
+2019-03-04 11:49:55.367  INFO 20922 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$4dd96a52] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:49:56.001  INFO 20922 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:49:56.041  INFO 20922 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:49:56.041  INFO 20922 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:49:56.056  INFO 20922 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:49:56.152  INFO 20922 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:49:56.153  INFO 20922 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3237 ms
+2019-03-04 11:49:56.934  INFO 20922 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:49:57.024  INFO 20922 --- [cluster-ClusterId{value='5c7cc38c9dfa3151ba5fea32', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:38}] to localhost:27017
+2019-03-04 11:49:57.043  INFO 20922 --- [cluster-ClusterId{value='5c7cc38c9dfa3151ba5fea32', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=10185416}
+2019-03-04 11:49:58.392  INFO 20922 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:49:58.515  INFO 20922 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:49:58.711  INFO 20922 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:49:59.191  INFO 20922 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:49:59.215  INFO 20922 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:49:59.246  INFO 20922 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:49:59.432  INFO 20922 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:49:59.508  INFO 20922 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#1865ad9e:0/SimpleConnection@281d25fd [delegate=amqp://guest@127.0.0.1:5672/, localPort= 39246]
+2019-03-04 11:49:59.816  INFO 20922 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:49:59.834  INFO 20922 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.125 seconds (JVM running for 13.925)
+2019-03-04 11:54:50.079  INFO 20922 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 11:54:51.014  INFO 20922 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 11:54:51.021  INFO 20922 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 11:54:51.021  INFO 20922 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:58:48.688  INFO 22350 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 22350 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 11:58:48.692  INFO 22350 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 11:58:50.638  INFO 22350 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 11:58:50.735  INFO 22350 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90ms. Found 2 repository interfaces.
+2019-03-04 11:58:51.301  INFO 22350 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$c41339bd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 11:58:51.855  INFO 22350 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 11:58:51.903  INFO 22350 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 11:58:51.904  INFO 22350 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 11:58:51.921  INFO 22350 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 11:58:52.027  INFO 22350 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 11:58:52.028  INFO 22350 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3279 ms
+2019-03-04 11:58:52.885  INFO 22350 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 11:58:52.967  INFO 22350 --- [cluster-ClusterId{value='5c7cc5a49dfa31574e6f8702', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:43}] to localhost:27017
+2019-03-04 11:58:52.974  INFO 22350 --- [cluster-ClusterId{value='5c7cc5a49dfa31574e6f8702', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3889834}
+2019-03-04 11:58:54.409  INFO 22350 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 11:58:54.538  INFO 22350 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 11:58:54.778  INFO 22350 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 11:58:55.291  INFO 22350 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 11:58:55.332  INFO 22350 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 11:58:55.390  INFO 22350 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 11:58:55.735  INFO 22350 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 11:58:55.881  INFO 22350 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#75363b0e:0/SimpleConnection@727b260c [delegate=amqp://guest@127.0.0.1:5672/, localPort= 39488]
+2019-03-04 11:58:56.064  INFO 22350 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 11:58:56.073  INFO 22350 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.258 seconds (JVM running for 12.923)
+2019-03-04 12:03:28.739  INFO 22350 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 12:03:29.313  INFO 22350 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 12:03:29.321  INFO 22350 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 12:03:29.321  INFO 22350 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:05:02.413  INFO 22954 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 22954 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 12:05:02.417  INFO 22954 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 12:05:04.369  INFO 22954 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 12:05:04.459  INFO 22954 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 2 repository interfaces.
+2019-03-04 12:05:04.991  INFO 22954 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$50093677] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 12:05:05.527  INFO 22954 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 12:05:05.583  INFO 22954 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 12:05:05.583  INFO 22954 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 12:05:05.600  INFO 22954 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 12:05:05.704  INFO 22954 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 12:05:05.704  INFO 22954 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3225 ms
+2019-03-04 12:05:06.386  INFO 22954 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 12:05:06.487  INFO 22954 --- [cluster-ClusterId{value='5c7cc71a9dfa3159aae3a9ee', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:46}] to localhost:27017
+2019-03-04 12:05:06.495  INFO 22954 --- [cluster-ClusterId{value='5c7cc71a9dfa3159aae3a9ee', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4143367}
+2019-03-04 12:05:08.058  INFO 22954 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 12:05:08.258  INFO 22954 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 12:05:08.589  INFO 22954 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:05:09.439  INFO 22954 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 12:05:09.483  INFO 22954 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 12:05:09.539  INFO 22954 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 12:05:09.910  INFO 22954 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 12:05:10.053  INFO 22954 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5cdaea35:0/SimpleConnection@70f84cb9 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 39642]
+2019-03-04 12:05:10.357  INFO 22954 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 12:05:10.367  INFO 22954 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 9.05 seconds (JVM running for 14.422)
+2019-03-04 12:06:57.195  INFO 22954 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 12:06:57.566  INFO 22954 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 12:06:57.576  INFO 22954 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 12:06:57.576  INFO 22954 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:07:38.555  INFO 23529 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 23529 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 12:07:38.559  INFO 23529 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 12:07:40.311  INFO 23529 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 12:07:40.441  INFO 23529 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 125ms. Found 2 repository interfaces.
+2019-03-04 12:07:41.048  INFO 23529 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$a97fd2bf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 12:07:41.652  INFO 23529 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 12:07:41.701  INFO 23529 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 12:07:41.701  INFO 23529 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 12:07:41.717  INFO 23529 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 12:07:41.830  INFO 23529 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 12:07:41.831  INFO 23529 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3216 ms
+2019-03-04 12:07:42.821  INFO 23529 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 12:07:42.983  INFO 23529 --- [cluster-ClusterId{value='5c7cc7b69dfa315be98685eb', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:49}] to localhost:27017
+2019-03-04 12:07:42.994  INFO 23529 --- [cluster-ClusterId{value='5c7cc7b69dfa315be98685eb', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4261901}
+2019-03-04 12:07:44.944  INFO 23529 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 12:07:45.157  INFO 23529 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 12:07:45.422  INFO 23529 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:07:46.137  INFO 23529 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 12:07:46.216  INFO 23529 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 12:07:46.311  INFO 23529 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 12:07:46.594  INFO 23529 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 12:07:46.906  INFO 23529 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#1b68c23f:0/SimpleConnection@372e8a94 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 39708]
+2019-03-04 12:07:47.340  INFO 23529 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 12:07:47.356  INFO 23529 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 9.887 seconds (JVM running for 17.769)
+2019-03-04 12:14:46.933  INFO 23529 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 12:14:47.578  INFO 23529 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 12:14:47.585  INFO 23529 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 12:14:47.586  INFO 23529 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:15:31.460  INFO 25756 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 25756 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 12:15:31.465  INFO 25756 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 12:15:33.409  INFO 25756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 12:15:33.511  INFO 25756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94ms. Found 2 repository interfaces.
+2019-03-04 12:15:34.061  INFO 25756 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$1253c7b1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 12:15:34.678  INFO 25756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 12:15:34.721  INFO 25756 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 12:15:34.721  INFO 25756 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 12:15:34.736  INFO 25756 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 12:15:34.870  INFO 25756 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 12:15:34.871  INFO 25756 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3349 ms
+2019-03-04 12:15:35.757  INFO 25756 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 12:15:35.869  INFO 25756 --- [cluster-ClusterId{value='5c7cc98f9dfa31649c17dae8', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:52}] to localhost:27017
+2019-03-04 12:15:35.880  INFO 25756 --- [cluster-ClusterId{value='5c7cc98f9dfa31649c17dae8', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4150112}
+2019-03-04 12:15:37.295  INFO 25756 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 12:15:37.410  INFO 25756 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 12:15:37.588  INFO 25756 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:15:38.524  INFO 25756 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 12:15:38.576  INFO 25756 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 12:15:38.628  INFO 25756 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 12:15:38.863  INFO 25756 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 12:15:38.953  INFO 25756 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4c372565:0/SimpleConnection@4d459e0f [delegate=amqp://guest@127.0.0.1:5672/, localPort= 40112]
+2019-03-04 12:15:39.104  INFO 25756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 12:15:39.109  INFO 25756 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.516 seconds (JVM running for 16.385)
+2019-03-04 12:15:51.963  INFO 25756 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 12:15:52.055  INFO 25756 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 12:15:52.067  INFO 25756 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 12:15:52.068  INFO 25756 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:16:39.420  INFO 26036 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 26036 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 12:16:39.424  INFO 26036 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 12:16:41.251  INFO 26036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 12:16:41.354  INFO 26036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96ms. Found 2 repository interfaces.
+2019-03-04 12:16:41.871  INFO 26036 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$f4d2716b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 12:16:42.505  INFO 26036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 12:16:42.551  INFO 26036 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 12:16:42.552  INFO 26036 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 12:16:42.568  INFO 26036 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 12:16:42.708  INFO 26036 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 12:16:42.708  INFO 26036 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3215 ms
+2019-03-04 12:16:43.542  INFO 26036 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 12:16:43.632  INFO 26036 --- [cluster-ClusterId{value='5c7cc9d39dfa3165b4bc316f', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:55}] to localhost:27017
+2019-03-04 12:16:43.653  INFO 26036 --- [cluster-ClusterId{value='5c7cc9d39dfa3165b4bc316f', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=8547458}
+2019-03-04 12:16:45.202  INFO 26036 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 12:16:45.339  INFO 26036 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 12:16:45.566  INFO 26036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 12:16:46.125  INFO 26036 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 12:16:46.161  INFO 26036 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 12:16:46.212  INFO 26036 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 12:16:46.441  INFO 26036 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 12:16:46.559  INFO 26036 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#47e84b92:0/SimpleConnection@34eeb44f [delegate=amqp://guest@127.0.0.1:5672/, localPort= 40140]
+2019-03-04 12:16:46.848  INFO 26036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 12:16:46.856  INFO 26036 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.348 seconds (JVM running for 12.845)
+2019-03-04 15:11:19.675  INFO 26036 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 15:11:20.209  INFO 26036 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 15:11:20.215  INFO 26036 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 15:11:20.216  INFO 26036 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:11:28.993  INFO 6849 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 6849 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 15:11:28.997  INFO 6849 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 15:11:30.886  INFO 6849 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 15:11:30.994  INFO 6849 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100ms. Found 2 repository interfaces.
+2019-03-04 15:11:31.571  INFO 6849 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$ae8cd610] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 15:11:32.095  INFO 6849 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 15:11:32.144  INFO 6849 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 15:11:32.144  INFO 6849 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 15:11:32.158  INFO 6849 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 15:11:32.248  INFO 6849 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 15:11:32.248  INFO 6849 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3192 ms
+2019-03-04 15:11:32.998  INFO 6849 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 15:11:33.118  INFO 6849 --- [cluster-ClusterId{value='5c7cf2cc9dfa311ac18d936b', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:60}] to localhost:27017
+2019-03-04 15:11:33.125  INFO 6849 --- [cluster-ClusterId{value='5c7cf2cc9dfa311ac18d936b', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3618903}
+2019-03-04 15:11:34.589  INFO 6849 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 15:11:34.716  INFO 6849 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 15:11:34.952  INFO 6849 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:11:35.514  INFO 6849 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 15:11:35.553  INFO 6849 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 15:11:35.596  INFO 6849 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 15:11:35.860  INFO 6849 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 15:11:35.948  INFO 6849 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#61a0ce2c:0/SimpleConnection@5598dd7b [delegate=amqp://guest@127.0.0.1:5672/, localPort= 45444]
+2019-03-04 15:11:36.111  INFO 6849 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 15:11:36.119  INFO 6849 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.062 seconds (JVM running for 13.281)
+2019-03-04 15:13:36.692  INFO 6849 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 15:13:37.077  INFO 6849 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 15:13:37.090  INFO 6849 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 15:13:37.091  INFO 6849 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:14:41.656  INFO 7320 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 7320 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 15:14:41.660  INFO 7320 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 15:14:43.470  INFO 7320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 15:14:43.598  INFO 7320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120ms. Found 2 repository interfaces.
+2019-03-04 15:14:44.255  INFO 7320 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$140d957d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 15:14:44.870  INFO 7320 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 15:14:44.920  INFO 7320 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 15:14:44.921  INFO 7320 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 15:14:44.939  INFO 7320 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 15:14:45.066  INFO 7320 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 15:14:45.066  INFO 7320 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3355 ms
+2019-03-04 15:14:46.041  INFO 7320 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 15:14:46.165  INFO 7320 --- [cluster-ClusterId{value='5c7cf38e9dfa311c98b5fdcd', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:65}] to localhost:27017
+2019-03-04 15:14:46.184  INFO 7320 --- [cluster-ClusterId{value='5c7cf38e9dfa311c98b5fdcd', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=9403471}
+2019-03-04 15:14:47.475  INFO 7320 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 15:14:47.602  INFO 7320 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 15:14:47.847  INFO 7320 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:14:48.374  INFO 7320 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 15:14:48.408  INFO 7320 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 15:14:48.447  INFO 7320 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 15:14:48.682  INFO 7320 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 15:14:48.799  INFO 7320 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6517adfb:0/SimpleConnection@11f27db7 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 45524]
+2019-03-04 15:14:49.043  INFO 7320 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 15:14:49.056  INFO 7320 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.287 seconds (JVM running for 12.976)
+2019-03-04 15:16:53.372  INFO 7320 --- [http-nio-8999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-04 15:16:53.372  INFO 7320 --- [http-nio-8999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-03-04 15:16:53.394  INFO 7320 --- [http-nio-8999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2019-03-04 15:17:43.829  INFO 7320 --- [http-nio-8999-exec-4] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:66}] to localhost:27017
+2019-03-04 15:30:45.243  INFO 7320 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 15:30:45.364  INFO 7320 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 15:30:45.371  INFO 7320 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 15:30:45.372  INFO 7320 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:30:45.377  INFO 7320 --- [Thread-5] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:66}] to localhost:27017 because the pool has been closed.
+2019-03-04 15:32:37.727  INFO 9291 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 9291 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 15:32:37.732  INFO 9291 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 15:32:39.647  INFO 9291 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 15:32:39.735  INFO 9291 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82ms. Found 2 repository interfaces.
+2019-03-04 15:32:40.335  INFO 9291 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$64a42901] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 15:32:40.928  INFO 9291 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 15:32:40.967  INFO 9291 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 15:32:40.968  INFO 9291 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 15:32:40.985  INFO 9291 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 15:32:41.084  INFO 9291 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 15:32:41.085  INFO 9291 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3297 ms
+2019-03-04 15:32:41.876  INFO 9291 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 15:32:41.992  INFO 9291 --- [cluster-ClusterId{value='5c7cf7c19dfa31244b4fbb37', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:71}] to localhost:27017
+2019-03-04 15:32:42.019  INFO 9291 --- [cluster-ClusterId{value='5c7cf7c19dfa31244b4fbb37', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18460343}
+2019-03-04 15:32:43.357  INFO 9291 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 15:32:43.475  INFO 9291 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 15:32:43.712  INFO 9291 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:32:44.232  INFO 9291 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 15:32:44.267  INFO 9291 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 15:32:44.310  INFO 9291 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 15:32:44.500  INFO 9291 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 15:32:44.617  INFO 9291 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#776c97a:0/SimpleConnection@65680df9 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 46008]
+2019-03-04 15:32:44.811  INFO 9291 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 15:32:44.815  INFO 9291 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 7.855 seconds (JVM running for 12.401)
+2019-03-04 15:32:44.912  INFO 9291 --- [SimpleAsyncTaskExecutor-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:72}] to localhost:27017
+2019-03-04 15:36:44.220  INFO 9291 --- [http-nio-8999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-04 15:36:44.221  INFO 9291 --- [http-nio-8999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-03-04 15:36:44.243  INFO 9291 --- [http-nio-8999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2019-03-04 15:48:29.682  INFO 9291 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 15:48:30.153  INFO 9291 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 15:48:30.160  INFO 9291 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 15:48:30.160  INFO 9291 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:48:30.163  INFO 9291 --- [Thread-5] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:72}] to localhost:27017 because the pool has been closed.
+2019-03-04 15:51:41.620  INFO 10685 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 10685 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 15:51:41.624  INFO 10685 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 15:51:43.662  INFO 10685 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 15:51:43.773  INFO 10685 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105ms. Found 2 repository interfaces.
+2019-03-04 15:51:44.389  INFO 10685 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d27c1cf6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 15:51:44.986  INFO 10685 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 15:51:45.033  INFO 10685 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 15:51:45.033  INFO 10685 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 15:51:45.050  INFO 10685 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 15:51:45.165  INFO 10685 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 15:51:45.166  INFO 10685 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3449 ms
+2019-03-04 15:51:46.074  INFO 10685 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 15:51:46.212  INFO 10685 --- [cluster-ClusterId{value='5c7cfc3a9dfa3129bdb2c074', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:73}] to localhost:27017
+2019-03-04 15:51:46.222  INFO 10685 --- [cluster-ClusterId{value='5c7cfc3a9dfa3129bdb2c074', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4838429}
+2019-03-04 15:51:47.699  INFO 10685 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 15:51:47.858  INFO 10685 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 15:51:48.044  INFO 10685 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:51:48.534  INFO 10685 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 15:51:48.561  INFO 10685 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 15:51:48.596  INFO 10685 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 15:51:48.761  INFO 10685 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 15:51:48.822  INFO 10685 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4877487a:0/SimpleConnection@570dfff6 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 46484]
+2019-03-04 15:51:48.977  INFO 10685 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 15:51:48.981  INFO 10685 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.309 seconds (JVM running for 13.582)
+2019-03-04 15:51:53.632  INFO 10685 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-03-04 15:51:53.936  INFO 10685 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-03-04 15:51:53.943  INFO 10685 --- [Thread-5] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2019-03-04 15:51:53.943  INFO 10685 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:54:02.058  INFO 11095 --- [main] c.s.p.ProductsSearchServiceApplication   : Starting ProductsSearchServiceApplication on IBMWAVE3-NILANJAN with PID 11095 (started by nilanjan in /home/nilanjan/Desktop/search service/products-search-service)
+2019-03-04 15:54:02.062  INFO 11095 --- [main] c.s.p.ProductsSearchServiceApplication   : No active profile set, falling back to default profiles: default
+2019-03-04 15:54:03.978  INFO 11095 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-04 15:54:04.081  INFO 11095 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94ms. Found 2 repository interfaces.
+2019-03-04 15:54:04.686  INFO 11095 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$c53a70be] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-04 15:54:05.355  INFO 11095 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8999 (http)
+2019-03-04 15:54:05.403  INFO 11095 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-04 15:54:05.403  INFO 11095 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-04 15:54:05.420  INFO 11095 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-03-04 15:54:05.538  INFO 11095 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-04 15:54:05.538  INFO 11095 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3408 ms
+2019-03-04 15:54:06.298  INFO 11095 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-03-04 15:54:06.400  INFO 11095 --- [cluster-ClusterId{value='5c7cfcc69dfa312b57e5f866', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:78}] to localhost:27017
+2019-03-04 15:54:06.412  INFO 11095 --- [cluster-ClusterId{value='5c7cfcc69dfa312b57e5f866', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=4492361}
+2019-03-04 15:54:07.776  INFO 11095 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-04 15:54:07.903  INFO 11095 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-03-04 15:54:08.129  INFO 11095 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-04 15:54:08.666  INFO 11095 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-03-04 15:54:08.700  INFO 11095 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-03-04 15:54:08.741  INFO 11095 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-03-04 15:54:08.929  INFO 11095 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2019-03-04 15:54:09.015  INFO 11095 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#32490ae2:0/SimpleConnection@157b46b6 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 46546]
+2019-03-04 15:54:09.224  INFO 11095 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8999 (http) with context path ''
+2019-03-04 15:54:09.253  INFO 11095 --- [main] c.s.p.ProductsSearchServiceApplication   : Started ProductsSearchServiceApplication in 8.08 seconds (JVM running for 13.025)
+2019-03-04 15:54:09.354  INFO 11095 --- [SimpleAsyncTaskExecutor-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:79}] to localhost:27017
+2019-03-04 15:54:44.223  INFO 11095 --- [http-nio-8999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-04 15:54:44.233  INFO 11095 --- [http-nio-8999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-03-04 15:54:44.255  INFO 11095 --- [http-nio-8999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
